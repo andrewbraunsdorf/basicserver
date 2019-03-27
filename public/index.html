@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,32 +9,52 @@
 </head>
 <script type="text/javascript">
 	function makeGETRequest() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log(this);
-            document.getElementById("getResponse").innerHTML = this.responseText;
-       }
-    };
-    xhttp.open("GET", "https://cors.io/?https://andrewbraunsdorf2018-andrewbraunsdorf.c9users.io/api/", true);
-    xhttp.send(); 
-}
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(this);
+				document.getElementById("getResponse").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("GET", "https://cors.io/?https://andrewbraunsdorf2018-andrewbraunsdorf.c9users.io/api/", true);
+		xhttp.send();
+	}
 
+	function makePOSTRequest() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				console.log(this);
+				document.getElementById("postResponse").innerHTML = this.responseText;
+			}
+		};
+
+		// open(method, url, async)
+		xhttp.open("POST", "https://cors-anywhere.herokuapp.com/https://andrewbraunsdorf2018-andrewbraunsdorf.c9users.io/api/", true);
+
+		// set header to match get request
+		xhttp.setRequestHeader("Content-type", "application/json");
+		const data = {
+			"employeeName": document.getElementById("employeeName").value
+		};
+		xhttp.send(JSON.stringify(data));
+	}
 </script>
+
 <body>
-	
+
 	<p> Hello World</p>
 	<button onclick="makeGETRequest()">GET request</button>
 	<p id="getResponse"></p>
-	
+
 	<form>
-	
-	Employee Name
-	<input id="employeeName" type="text"/>
-	<button>POST request</button>
-	<p id="postResponse"></p
-	</form>
-	
-	
+
+		Employee Name
+		<input id="employeeName" type="text" />
+		<button>POST request</button>
+		<p id="postResponse"></p </form>
+
+
 </body>
+
 </html>
