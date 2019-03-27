@@ -9,6 +9,10 @@ app.get("/api", (req, res) => {
 	res.send("This is a response from Homebase");
 });
 
+app.post("/api", (req, res)=> {
+	res.send(req.body);
+});
+
 const port = process.env.PORT;
 const ip = process.env.IP;
 
