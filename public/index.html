@@ -40,21 +40,20 @@
 		xhttp.send(JSON.stringify(data));
 	}
 </script>
-
 <body>
-
+	
 	<p> Hello World</p>
 	<button onclick="makeGETRequest()">GET request</button>
 	<p id="getResponse"></p>
-
-	<form>
-
-		Employee Name
-		<input id="employeeName" type="text" />
-		<button>POST request</button>
-		<p id="postResponse"></p </form>
-
-
+	
+	<form onsubmit= "makePOSTRequest();return false">
+	
+	Employee Name
+	<input id="employeeName" type="text"/>
+	<button onclick="makePOSTRequest();return false">POST request</button>
+	<p id="postResponse"></p
+	</form>
+	
+	
 </body>
-
 </html>
